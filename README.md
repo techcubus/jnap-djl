@@ -1,3 +1,9 @@
+---
+title: Untitled
+author: Ruri Hoshino
+date: 2026-05-05T16:24:14Z
+---
+
 ### jnap - library for talking to Linksys router API
 
 This library allows you to programatically talk to Linksys Smart Wi-Fi
