@@ -1,7 +1,8 @@
 ---
-title: Untitled
-author: Ruri Hoshino
+author: Jake Kara
+modified by: Lily the Techcubus
 date: 2026-05-05T16:24:14Z
+change: Modified for Python 3
 ---
 
 ### jnap - library for talking to Linksys router API
