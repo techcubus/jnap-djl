@@ -1,2 +1,5 @@
 *.pyc
+*.temp
+*.log
+*.test
 dist
