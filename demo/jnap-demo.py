@@ -10,7 +10,12 @@ from time import sleep
 import json
 import sys
 import getpass
- 
+
+PING_TARGET = "192.168.1.200"
+PING_COUNT = 5
+PING_TIME_OUT = 60
+PING_SLEEP_FOR = 2
+
 addr = sys.argv[1]
 router = Linksys(addr)
 
@@ -29,19 +34,18 @@ print (json.dumps(router.get_device_info().json(), indent=2))
 
 # Testing out the ping functionality
 print (json.dumps(router.stop_ping().json(), indent=2))
-print (json.dumps(router.start_ping(host="192.168.1.197",count=10).json(), indent=2))
+print (json.dumps(router.start_ping(host=PING_TARGET,count=PING_COUNT).json(), indent=2))
 
 # Check every 2 seconds to see if ping is done. TIMEOUT after 1 minute
-TIMEOUT=60
-SLEEPFOR=2
+TIMEOUT=PING_TIME_OUT
 
 while TIMEOUT > 0:
     status = router.get_ping_status().json()["output"]["isRunning"]
     if status != True: break
     else:
         print ("Still pinging: " + str(status))
-    TIMEOUT -= SLEEPFOR
-    sleep(SLEEPFOR)
+    TIMEOUT -= PING_SLEEP_FOR
+    sleep(PING_SLEEP_FOR)
 
 print (json.dumps(router.get_ping_status().json(), indent=2))
 print (json.dumps(router.stop_ping().json(), indent=2))
@@ -51,14 +55,14 @@ print (json.dumps(router.stop_traceroute().json(), indent=2))
 print (json.dumps(router.start_traceroute("google.com").json(), indent=2))
 
 # Reset the clock
-TIMEOUT = 60
+TIMEOUT = PING_TIME_OUT
 while TIMEOUT > 0:
     status = router.get_traceroute_status().json()["output"]["isRunning"]
     if status != True: break
     else:
         print ("Still tracing: " + str(status))
-    TIMEOUT -= SLEEPFOR
-    sleep(SLEEPFOR)
+    TIMEOUT -= PING_SLEEP_FOR
+    sleep(PING_SLEEP_FOR)
 
 print (json.dumps(router.stop_traceroute().json(), indent=2))
 print (json.dumps(router.get_traceroute_status().json(), indent=2))
