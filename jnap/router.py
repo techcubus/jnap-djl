@@ -135,17 +135,19 @@ class Linksys:
     #       rets - same as do_action
     #      notes - authentication required
     #               
-    def start_ping(self, host="localhost", byte_size=31337, count=10):
+    def start_ping(self, host="localhost", byte_size=56, count=10):
 
         data={
             "host":host,
             "packetSizeBytes":byte_size
         }
 
+        # See above, if 'none' the router pings until stopped
         if count is not None:
             data["pingCount"] = count
 
-        print (data)
+        # I think this print() was meant for debugging?
+        # print (data)
         
         return self.do_action("diagnostics/StartPing",
                               headers=self.auth(),
