@@ -31,7 +31,7 @@ print ("has_default_password = " + json.dumps(router.has_default_password().json
 print ("get_users = " + json.dumps(router.get_users().json(), indent=2))
 
 # Getting a bunch of device info
-print ("get_deice_info = " + json.dumps(router.get_device_info().json(), indent=2))
+print ("get_device_info = " + json.dumps(router.get_device_info().json(), indent=2))
 
 # Testing out the ping functionality
 print ("stop_ping = " + json.dumps(router.stop_ping().json(), indent=2))

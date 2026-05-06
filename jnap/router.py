@@ -7,6 +7,8 @@ from base64 import b64encode as b64
 class Linksys:
 
     def __init__(self, url, pw=""):
+        if not url.startswith("http://") and not url.startswith("https://"):
+            url = "http://" + url
         self.url = url
         self.pw = pw
 
